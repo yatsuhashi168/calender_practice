@@ -5,6 +5,15 @@ require 'date'
 date = Date.today
 month = date.month
 year = date.year
+
+require 'optparse'
+opt = OptionParser.new
+
+opt.on('-y VAL', 'set a year') {|v| year = v.to_i}
+opt.on('-m VAL', 'set a month') {|v| month = v.to_i}
+
+opt.parse!(ARGV)
+
 puts "#{month}月 #{year}".center(10)
 weekdays = %w[日 月 火 水 木 金 土]
 weekdays.each do |weekday|
@@ -33,3 +42,4 @@ while countday.day != lastday.day
 
   countday += 1
 end
+
